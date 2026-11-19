@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aiko Matrio — AI Tutorials</title>
+<meta name="description" content="Step-by-step AI tutorials and honest tool tests from the Aiko Matrio YouTube channel: AI video, images, characters, music and more.">
+<meta property="og:title" content="Aiko Matrio — AI Tutorials">
+<meta property="og:description" content="AI tools, tested. Step-by-step tutorials for AI video, images, characters and music.">
+<meta property="og:image" content="https://i.ytimg.com/vi/OW0dqo5bszY/hqdefault.jpg">
+<link rel="icon" href="https://yt3.ggpht.com/YwStBo0l7mDiN0JBWEq5FHAWk1J2i3v8Pi4X52mnVgsbTh84wf0k4jSfszHdDGl-Oj8XRMj5=s88-c-k-c0x00ffffff-no-rj">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff; --surface: #ffffff; --surface-2: #f4f4f8; --border: #e6e6ee;
+    --fg: #1a1a1a; --muted: #5b5b6b; --accent: #6d4aff; --accent-2: #0891b2; --accent-fg: #fff;
+    --red: #ff2e4d; --radius: 16px; --shadow: 0 8px 24px rgba(20,20,40,.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 Inter, system-ui, sans-serif; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; line-height: 1.15; margin: 0; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .eyebrow { color: var(--accent-2); font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .muted { color: var(--muted); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; border: 1px solid var(--border); background: var(--surface); transition: transform .15s, border-color .15s; }
+  .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 80%, transparent); border-bottom: 1px solid var(--border); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: "Space Grotesk"; font-weight: 700; font-size: 1.15rem; }
+  .brand img { width: 34px; height: 34px; border-radius: 50%; }
+  .links { display: flex; gap: 24px; font-weight: 500; color: var(--muted); }
+  .links a:hover { color: var(--fg); }
+  nav .btn { padding: 8px 16px; font-size: .9rem; }
+  @media (max-width: 720px) { .links { display: none; } }
+
+  /* hero */
+  .hero { position: relative; padding: 80px 0 64px; }
+  .hero::before { content: ""; position: absolute; inset: -200px 0 auto; height: 600px; z-index: -1;
+    background: radial-gradient(600px 300px at 20% 30%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+                radial-gradient(500px 280px at 80% 20%, color-mix(in srgb, var(--accent-2) 8%, transparent), transparent 70%); }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -.02em; }
+  .grad { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin: 20px 0 28px; }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 32px; margin-top: 36px; flex-wrap: wrap; }
+  .stat b { display: block; font-family: "Space Grotesk"; font-size: 1.8rem; }
+  .stat span { color: var(--muted); font-size: .9rem; }
+  .hero-card { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); cursor: pointer; aspect-ratio: 16/9; background: var(--surface); }
+  .hero-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .hero-card:hover img { transform: scale(1.04); }
+  .hero-card .tag { position: absolute; top: 14px; left: 14px; background: var(--accent); color: var(--accent-fg); font-size: .78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .hero-card .cap { position: absolute; inset: auto 0 0; padding: 40px 18px 16px; background: linear-gradient(transparent, rgba(0,0,0,.85)); color: #fff; font-weight: 600; }
+  @media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } .hero { padding-top: 48px; } }
+
+  .play { position: absolute; inset: 0; display: grid; place-items: center; }
+  .play span { width: 64px; height: 64px; border-radius: 50%; background: rgba(0,0,0,.55); display: grid; place-items: center; backdrop-filter: blur(4px); transition: background .2s; }
+  .play svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
+  .hero-card:hover .play span, .card:hover .play span { background: var(--red); }
+
+  section { padding: 72px 0; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+
+  /* tutorial cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform .2s, border-color .2s; display: flex; flex-direction: column; }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .thumb { position: relative; aspect-ratio: 16/9; background: var(--surface-2); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb .play span { width: 48px; height: 48px; opacity: 0; transition: opacity .2s, background .2s; }
+  .card:hover .thumb .play span { opacity: 1; }
+  .dur { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.8); color: #fff; font-size: .75rem; font-weight: 600; padding: 2px 6px; border-radius: 6px; }
+  .card .body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card h3 { font-size: 1.02rem; font-family: Inter; font-weight: 600; line-height: 1.35; }
+  .meta { color: var(--muted); font-size: .85rem; margin-top: auto; }
+
+  /* topics */
+  .topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .topic { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .topic .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 14px; background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+  .topic .ico svg { width: 22px; height: 22px; }
+  .topic h3 { font-size: 1.1rem; margin-bottom: 6px; }
+  .topic p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  /* shorts */
+  .shorts { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  .short { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; cursor: pointer; background: var(--surface-2); border: 1px solid var(--border); }
+  .short img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+  .short:hover img { transform: scale(1.06); }
+  .short .cap { position: absolute; inset: auto 0 0; padding: 40px 10px 10px; background: linear-gradient(transparent, rgba(0,0,0,.9)); color: #fff; font-size: .82rem; font-weight: 600; line-height: 1.3; }
+  .short .views { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.65); color: #fff; font-size: .72rem; padding: 2px 8px; border-radius: 999px; }
+
+  /* about */
+  .about { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; background: var(--surface-2); border: 1px solid var(--border); border-radius: 24px; padding: 40px; }
+  .about img { width: 160px; height: 160px; border-radius: 50%; border: 3px solid var(--accent); }
+  .about ul { padding: 0; margin: 18px 0 0; list-style: none; display: grid; gap: 8px; }
+  .about li::before { content: "✓"; color: var(--accent-2); font-weight: 700; margin-right: 10px; }
+  @media (max-width: 720px) { .about { grid-template-columns: 1fr; text-align: center; padding: 28px 20px; } .about img { margin: 0 auto; width: 120px; height: 120px; } .about ul { text-align: left; } }
+
+  /* subscribe */
+  .sub { text-align: center; padding: 64px 24px; border-radius: 24px; background: var(--surface-2); border: 1px solid var(--border); }
+  .sub h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 12px; }
+  .sub p { color: var(--muted); margin: 0 auto 24px; max-width: 520px; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--muted); font-size: .9rem; margin-top: 40px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer nav { all: unset; display: flex; gap: 18px; flex-wrap: wrap; }
+  footer a:hover { color: var(--fg); }
+
+  /* modal */
+  dialog { border: 0; padding: 0; background: transparent; width: min(960px, 94vw); }
+  dialog::backdrop { background: rgba(0,0,0,.8); backdrop-filter: blur(4px); }
+  dialog .frame { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: #000; }
+  dialog.vertical { width: min(420px, 92vw); }
+  dialog.vertical .frame { aspect-ratio: 9/16; max-height: 86vh; margin: 0 auto; }
+  dialog iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  dialog .close { position: absolute; top: -44px; right: 0; background: none; border: 0; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; }
+  dialog .yt { display: block; text-align: center; color: #fff; margin-top: 12px; font-size: .9rem; opacity: .8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="https://yt3.ggpht.com/YwStBo0l7mDiN0JBWEq5FHAWk1J2i3v8Pi4X52mnVgsbTh84wf0k4jSfszHdDGl-Oj8XRMj5=s88-c-k-c0x00ffffff-no-rj" alt="">Aiko Matrio</a>
+    <div class="links">
+      <a href="#tutorials">Tutorials</a><a href="#topics">Topics</a><a href="#shorts">Shorts</a><a href="#about">About</a>
+    </div>
+    <a class="btn primary" href="https://www.youtube.com/@aikomatrio?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Testing the digital world</div>
+      <h1>AI tools, tested.<br><span class="grad">Step by step.</span></h1>
+      <p class="lead">Short, no-hype tutorials that show you exactly how to make AI videos, movie posters, character sheets, AI music artists and more, with the tools that actually work.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.youtube.com/@aikomatrio/videos" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          Watch on YouTube</a>
+        <a class="btn" href="#tutorials">Browse tutorials</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>45K+</b><span>views</span></div>
+        <div class="stat"><b>78</b><span>videos</span></div>
+        <div class="stat"><b>1–4 min</b><span>per tutorial</span></div>
+      </div>
+    </div>
+    <div class="hero-card" data-id="OW0dqo5bszY" role="button" tabindex="0" aria-label="Play: How to Build the Perfect AI Character Sheet">
+      <img src="https://i.ytimg.com/vi/OW0dqo5bszY/hqdefault.jpg" alt="">
+      <div class="tag">Most watched</div>
+      <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="cap">How to Build the Perfect AI Character Sheet (Step-by-Step)</div>
+    </div>
+  </div>
+</header>
+
+<section id="tutorials">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Learn</div><h2>Step-by-step tutorials</h2></div>
+      <a class="btn" href="https://www.youtube.com/@aikomatrio/videos" target="_blank" rel="noopener">All videos →</a>
+    </div>
+    <div class="grid" id="tutorial-grid"></div>
+  </div>
+</section>
+
+<section id="topics">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">What I test</div><h2>Topics</h2></div></div>
+    <div class="topics">
+      <div class="topic"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3"/></svg></div><h3>AI video</h3><p>Kling, Wan, Seedance, Google Flow: turning prompts and pictures into clips, trailers and short films.</p></div>
+      <div class="topic"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div><h3>AI images &amp; posters</h3><p>Professional movie posters, free image generators and prompts that hold up.</p></div>
+      <div class="topic"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div><h3>AI characters</h3><p>Consistent character sheets and AI influencer workflows you can reuse across videos.</p></div>
+      <div class="topic"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><h3>AI music &amp; voice</h3><p>Building an AI music artist, music videos, Suno, voice cloning and voice fixes.</p></div>
+      <div class="topic"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div><h3>Honest verdicts</h3><p>What works, what doesn't, and what's worth your time. No unnecessary hype.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="shorts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Quick hits</div><h2>Popular Shorts</h2></div>
+      <a class="btn" href="https://www.youtube.com/@aikomatrio/shorts" target="_blank" rel="noopener">All Shorts →</a>
+    </div>
+    <div class="shorts" id="shorts-grid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <img src="https://yt3.ggpht.com/YwStBo0l7mDiN0JBWEq5FHAWk1J2i3v8Pi4X52mnVgsbTh84wf0k4jSfszHdDGl-Oj8XRMj5=s320-c-k-c0x00ffffff-no-rj" alt="Aiko Matrio">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>Hi, I'm Aiko.</h2>
+        <p class="muted">I explore, test and review the digital tools shaping how we create: AI video, image and music generators, apps and emerging tech. Every tutorial is built from real tests, so you can skip the trial and error.</p>
+        <ul>
+          <li>Real step-by-step workflows, not just demos</li>
+          <li>Short videos that get to the point</li>
+          <li>Honest comparisons and verdicts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sub">
+      <h2>New AI tutorials every week</h2>
+      <p>Subscribe on YouTube so you don't miss the next tool test.</p>
+      <a class="btn primary" href="https://www.youtube.com/@aikomatrio?sub_confirmation=1" target="_blank" rel="noopener">Subscribe to Aiko Matrio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Aiko Matrio · <a href="https://www.youtube.com/@aikomatrio" target="_blank" rel="noopener">youtube.com/@aikomatrio</a></div>
+    <nav>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog id="player">
+  <button class="close" aria-label="Close">×</button>
+  <div class="frame"></div>
+  <a class="yt" target="_blank" rel="noopener">Open on YouTube ↗</a>
+</dialog>
+
+<script>
+const tutorials = [
+  ["_v54AnmK34w", "AI Turned My Poster Into a Movie Trailer (Watch Till the End)", "1:57", "Nov 2026"],
+  ["KyhrlE9r_DU", "How People Are Making $10k/Month with AI Influencers (APOB AI Workflow)", "4:10", "Nov 2026"],
+  ["pE0O7OQ-iW8", "I Built an AI Music Artist From Scratch (Step-by-Step)", "2:53", "Oct 2026"],
+  ["uuhVADbqf24", "How I Made a Professional Movie Poster in 5 Minutes (AI Tutorial)", "1:36", "Oct 2026"],
+  ["OW0dqo5bszY", "How to Build the Perfect AI Character Sheet (Step-by-Step)", "1:50", "Oct 2026"],
+  ["UzFUng9Xl60", "I Made a Movie with Google Flow AI (You Won't Believe It)", "1:54", "Oct 2026"],
+  ["5p6kAS2pUXs", "Kling 4.0 Tested", "1:36", "Oct 2026"],
+  ["v0NtCxgtP9M", "I Recreated a Viral AI Video: Here's Why One Prompt Isn't Enough", "4:15", "Sep 2026"],
+];
+const shorts = [
+  ["dTj1CAG36hw", "POV: The 'Why Did I Come Here?' Moment", "6.3K"],
+  ["Lhwwpri8lzk", "When a Tiny Ant Becomes Your Arch Nemesis", "2K"],
+  ["PI2QHObNy-g", "The easiest way to create AI music video", "1.6K"],
+  ["QifgpLEw_Bc", "Suno AI Music: You Won't Believe What AI Can Do Now", "1.2K"],
+  ["3EAbj5SgkI4", "My brain trying to talk to AI 😂", "822"],
+  ["E32Xgfs7DdY", "The AI tool everyone is talking about", "568"],
+  ["U7p_8lFQj-4", "Is this the end of traditional video editing?", "302"],
+  ["jZjBLsYyMjY", "I Let AI Fix My Voice... Here's What Happened", "293"],
+  ["yjXv5Tis9gs", "How I Make Simple AI Videos in Seconds", "244"],
+  ["nA2LwZ4dlpc", "Voice Cloning AI: I Can't Believe This Works!", "188"],
+];
+const thumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const playIcon = '<div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>';
+
+document.getElementById("tutorial-grid").innerHTML = tutorials.map(([id, t, d, date]) => `
+  <article class="card" data-id="${id}" role="button" tabindex="0" aria-label="Play: ${esc(t)}">
+    <div class="thumb"><img loading="lazy" src="${thumb(id)}" alt="">${playIcon}<span class="dur">${d}</span></div>
+    <div class="body"><h3>${esc(t)}</h3><div class="meta">${date}</div></div>
+  </article>`).join("");
+
+document.getElementById("shorts-grid").innerHTML = shorts.map(([id, t, v]) => `
+  <div class="short" data-id="${id}" data-vertical="1" role="button" tabindex="0" aria-label="Play: ${esc(t)}">
+    <img loading="lazy" src="${thumb(id)}" alt=""><span class="views">${v} views</span><div class="cap">${esc(t)}</div>
+  </div>`).join("");
+
+const dlg = document.getElementById("player"), frame = dlg.querySelector(".frame"), ytLink = dlg.querySelector(".yt");
+function openVideo(el) {
+  const id = el.dataset.id, vertical = !!el.dataset.vertical;
+  dlg.classList.toggle("vertical", vertical);
+  frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="YouTube video"></iframe>`;
+  ytLink.href = vertical ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`;
+  dlg.showModal();
+}
+function closeVideo() { frame.innerHTML = ""; dlg.close(); }
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-id]");
+  if (el) openVideo(el);
+  else if (e.target === dlg || e.target.closest(".close")) closeVideo();
+});
+document.addEventListener("keydown", e => {
+  const el = e.target.closest && e.target.closest("[data-id]");
+  if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openVideo(el); }
+});
+dlg.addEventListener("close", () => { frame.innerHTML = ""; });
+</script>
+</body>
+</html>
